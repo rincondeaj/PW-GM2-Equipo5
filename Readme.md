@@ -12,14 +12,10 @@ Este repositorio contiene el trabajo de grupo desarrollado para la asignatura de
 
 ---
 
-## 👥 Equipo de Desarrollo (GM2 - Equipo 5)
+### 👥 Integrantes del Equipo (GM2 - Equipo 5)
 
-Este proyecto fue desarrollado en colaboración por los siguientes integrantes:
-
-| Nombre Completo |
-| :--- | :--- | :--- |
-| Pablo Miguel Martín Segovia |
-| Antonio Jesús Merlo Morales | 
-| Juan Antonio Mellado Arenas | 
-| Javier López Moras | 
-| Antonio Cañete López |
+* Pablo Miguel Martín Segovia
+* Antonio Jesús Merlo Morales
+* Juan Antonio Mellado Arenas
+* Javier López Moras
+* Antonio Cañete López
