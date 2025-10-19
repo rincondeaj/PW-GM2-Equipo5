@@ -1,6 +1,6 @@
 package es.uco.pw.demo.repository;
 
-// --- 1. LOS IMPORTS QUE FALTABAN ---
+//Imports necesarios
 import es.uco.pw.demo.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-// --- FIN DE LOS IMPORTS ---
 
 
-// --- 2. LA CLASE PRINCIPAL QUE FALTABA ---
+//Añadimos la clase memberRepository
 @Repository
 public class MemberRepository {
 
@@ -25,8 +24,7 @@ public class MemberRepository {
     }
 
     /**
-     * Mapeador para convertir una fila de la BBDD a un objeto Member
-     * (Esta es una CLASE INTERNA, debe ir DENTRO de MemberRepository)
+     *Funcion para convertir una fila de la base de datos en un objeto Member.
      */
     private static final class MemberMapper implements RowMapper<Member> {
         
@@ -41,18 +39,19 @@ public class MemberRepository {
             member.setRegistrationDate(rs.getDate("registration_date").toLocalDate());
             member.setSkipperTitle(rs.getBoolean("skipper_title"));
 
-            // --- 3. EL ARREGLO PARA ROLES NULOS O VACÍOS ---
+            /** Arreglo para el posible valor nulo en 'role'
+            *Ya que si era nulo daba error
+            */
             String roleFromDB = rs.getString("role");
             if (roleFromDB != null && !roleFromDB.isEmpty()) {
                 member.setRole(Member.RoleType.valueOf(roleFromDB.toUpperCase()));
             } else {
                 member.setRole(null);
             }
-            // --- FIN DEL ARREGLO ---
 
             return member;
         }
-    } // --- Fin de la clase interna MemberMapper ---
+    }
 
     /**
      * Obtiene todos los miembros.
@@ -81,4 +80,4 @@ public class MemberRepository {
         );
     }
     
-} // --- 4. EL CIERRE DE LA CLASE PRINCIPAL MemberRepository ---
+}

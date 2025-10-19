@@ -1,5 +1,6 @@
 package es.uco.pw.demo.controller;
 
+//IMPORTS NECESARIOS
 import es.uco.pw.demo.model.Member;
 import es.uco.pw.demo.model.Registration;
 import es.uco.pw.demo.model.Reservation;
@@ -28,18 +29,17 @@ public class ReservationController {
     private RegistrationRepository registrationRepository; // Dependencia de Registration
 
     /**
-     * Muestra el formulario de reserva, cargando las listas de miembros y matrículas.
-     * Esta es la "consulta compleja" de la Semana 4.
+     * Muestra el formulario para añadir una nueva reserva
      */
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        // 1. Cargar todos los miembros para el desplegable
+        //Cargar members para el despliegue
         List<Member> allMembers = memberRepository.findAll();
         
-        // 2. Cargar todas las matrículas para el desplegable
+        //Carga las matriculas para el desplegable
         List<Registration> allRegistrations = registrationRepository.findAll();
 
-        // 3. Añadir las listas y el objeto vacío al modelo
+        //Añade vistas o modelo vacio para el formulario
         model.addAttribute("allMembers", allMembers);
         model.addAttribute("allRegistrations", allRegistrations);
         model.addAttribute("newReservation", new Reservation());

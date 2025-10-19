@@ -1,5 +1,6 @@
 package es.uco.pw.demo.controller;
 
+//IMPORTS NECESARIOS
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,7 @@ public class MemberController {
     }
 
     /**
-     * Procesa el formulario y guarda el nuevo miembro.
+     * Guarda el nuevo miembro en la base de datos.
      */
     @PostMapping("/add")
     public String saveMember(@ModelAttribute("newMember") Member member) { // Objetos corregidos

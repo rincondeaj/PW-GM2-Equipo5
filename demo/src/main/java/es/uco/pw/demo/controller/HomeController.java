@@ -1,16 +1,15 @@
 package es.uco.pw.demo.controller;
 
-// --- AÑADIR ESTOS DOS IMPORTS ---
+//IMPORTS NECESARIOS
 import es.uco.pw.demo.model.Boat;
 import es.uco.pw.demo.model.Member;
-// --- FIN DE LOS IMPORTS A AÑADIR ---
-
 import es.uco.pw.demo.model.Registration;
 import es.uco.pw.demo.model.Reservation;
 import es.uco.pw.demo.repository.BoatRepository;
 import es.uco.pw.demo.repository.MemberRepository;
 import es.uco.pw.demo.repository.RegistrationRepository;
 import es.uco.pw.demo.repository.ReservationRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

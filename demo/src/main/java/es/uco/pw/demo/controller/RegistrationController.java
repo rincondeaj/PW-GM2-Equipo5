@@ -1,5 +1,6 @@
 package es.uco.pw.demo.controller;
 
+//IMPORTS NECESARIOS
 import es.uco.pw.demo.model.Registration;
 import es.uco.pw.demo.repository.RegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class RegistrationController {
             registrationRepository.save(registration);
         } catch (Exception e) {
             e.printStackTrace();
-            // redirigir a una página de error
+            // Redirige a una página de error
         }
-        return "redirect:/"; // Vuelve a la página principal
+        return "redirect:/"; // Redirige a la página principal después de guardar
     }
 }
