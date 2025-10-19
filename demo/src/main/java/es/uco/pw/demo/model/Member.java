@@ -2,7 +2,7 @@ package es.uco.pw.demo.model;
 
 import java.time.LocalDate;
 
-public class Memer {
+public class Member {
 
     // Enum interno
     public enum RoleType {

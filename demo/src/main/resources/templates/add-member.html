@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/thymeleaf.org">
+<head>
+    <title>Añadir Miembro</title>
+    <link rel="stylesheet" th:href="@{/css/main-styles.css}" />
+</head>
+<body>
+    <h1>Añadir un Nuevo Miembro 🙍</h1>
+
+    <form method="POST" th:action="@{/member/add}" th:object="${newMember}">
+
+        <div>
+            <label for="dni">DNI:</label>
+            <input type="text" th:field="*{dni}" id="dni" />
+        </div>
+
+        <div>
+            <label for="firstName">Nombre:</label>
+            <input type="text" th:field="*{firstName}" id="firstName" />
+        </div>
+        
+        <div>
+            <label for="lastName">Apellidos:</label>
+            <input type="text" th:field="*{lastName}" id="lastName" />
+        </div>
+
+        <div>
+            <label for="birthDate">Fecha de Nacimiento:</label>
+            <input type="date" th:field="*{birthDate}" id="birthDate" />
+        </div>
+
+        <div>
+            <label for="address">Dirección:</label>
+            <input type="text" th:field="*{address}" id="address" />
+        </div>
+
+        <div>
+            <label for="registrationDate">Fecha de Registro:</label>
+            <input type="date" th:field="*{registrationDate}" id="registrationDate" />
+        </div>
+
+        <div>
+            <label for="role">Rol:</label>
+            <select th:field="*{role}" id="role">
+                <option th:each="roleType : ${T(es.uco.pw.demo.model.Member.RoleType).values()}"
+                        th:value="${roleType}"
+                        th:text="${roleType}">
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <input type="checkbox" th:field="*{skipperTitle}" id="skipperTitle" />
+            <label for="skipperTitle" style="display: inline-block;">¿Tiene título de patrón?</label>
+        </div>
+
+        <button type="submit">Guardar Miembro</button>
+    </form>
+    
+    <br/>
+    <a href="/">Volver al Dashboard</a>
+</body>
+</html>

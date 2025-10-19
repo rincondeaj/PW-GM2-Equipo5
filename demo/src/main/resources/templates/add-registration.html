@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/thymeleaf.org">
+<head>
+    <title>Añadir Matrícula</title>
+    <link rel="stylesheet" th:href="@{/css/main-styles.css}" />
+</head>
+<body>
+    <h1>Añadir Nueva Matrícula 🎟️</h1>
+
+    <form method="POST" th:action="@{/registration/add}" th:object="${newRegistration}">
+        
+        <div>
+            <label for="type">Tipo de Matrícula:</label>
+            <select th:field="*{type}" id="type">
+                <option th:each="regType : ${T(es.uco.pw.demo.model.Registration.RegistrationType).values()}"
+                        th:value="${regType}"
+                        th:text="${regType}">
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="creationDate">Fecha de Creación:</label>
+            <input type="date" th:field="*{creationDate}" id="creationDate" />
+        </div>
+
+        <button type="submit">Guardar Matrícula</button>
+    </form>
+    
+    <br/>
+    <a href="/">Volver al Dashboard</a>
+</body>
+</html>

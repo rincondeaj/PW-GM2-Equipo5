@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/thymeleaf.org">
+<head>
+    <title>Añadir Reserva</title>
+    <link rel="stylesheet" th:href="@{/css/main-styles.css}" />
+</head>
+<body>
+    <h1>Añadir Nueva Reserva 📅</h1>
+
+    <form method="POST" th:action="@{/reservation/add}" th:object="${newReservation}">
+        
+        <div>
+            <label for="memberId">Miembro:</label>
+            <select th:field="*{memberId}" id="memberId">
+                <option value="">-- Selecciona un miembro --</option>
+                <option th:each="member : ${allMembers}"
+                        th:value="${member.memberId}"
+                        th:text="${member.firstName} + ' ' + ${member.lastName} + ' (' + ${member.dni} + ')'">
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="registrationId">Matrícula (ID):</label>
+            <select th:field="*{registrationId}" id="registrationId">
+                <option value="">-- Selecciona una matrícula --</option>
+                <option th:each="reg : ${allRegistrations}"
+                        th:value="${reg.registrationId}"
+                        th:text="'ID: ' + ${reg.registrationId} + ' (' + ${reg.type} + ')'">
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="date">Fecha de la Reserva:</label>
+            <input type="date" th:field="*{date}" id="date" />
+        </div>
+
+        <div>
+            <label for="reservedSeats">Asientos Reservados:</label>
+            <input type="number" th:field="*{reservedSeats}" id="reservedSeats" />
+        </div>
+
+        <div>
+            <label for="purpose">Propósito:</label>
+            <input type="text" th:field="*{purpose}" id="purpose" />
+        </div>
+
+        <div>
+            <label for="totalPrice">Precio Total:</label>
+            <input type="number" step="0.01" th:field="*{totalPrice}" id="totalPrice" />
+        </div>
+
+        <button type="submit">Guardar Reserva</button>
+    </form>
+    
+    <br/>
+    <a href="/">Volver al Dashboard</a>
+</body>
+</html>

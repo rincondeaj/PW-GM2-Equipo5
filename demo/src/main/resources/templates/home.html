@@ -2,51 +2,147 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.w3.org/1999/thymeleaf.org">
 <head>
-    <title>My first application</title>
-    <style>
-        body { font-family: sans-serif; margin: 2em; }
-        table { border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; }
-        th { background-color: #f4f4f4; }
-        
-        .logo-uco {
-            width: 150px;
-            height: auto;
-            display: block;
-            margin-bottom: 1em;
-        }
-    </style>
+    <title>Club Náutico - Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/main-styles.css}" />
 </head>
 <body>
-    <h1>Welcome to...</h1>
-    <img th:src="@{/images/Uco.png}" class="logo-uco" /> 
-
-    <h2>Lista de Barcos ⛵</h2>
-
-    <div th:if="${!boats.isEmpty()}">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Matrícula</th>
-                    <th>Tipo</th>
-                    <th>Capacidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="boat : ${boats}">
-                    <td th:text="${boat.name}">El Veloz</td>
-                    <td th:text="${boat.registrationNumber}">1234-ABC</td>
-                    <td th:text="${boat.type}">VELERO</td>
-                    <td th:text="${boat.capacity}">8</td>
-                </tr>
-            </tbody>
-        </table>
+    
+    <div class="header-container">
+        <div>
+            <h1>Dashboard del Club</h1>
+            <img th:src="@{/images/Uco.png}" class="logo-uco" alt="Logo UCO" />
+        </div>
+        <div class="button-container">
+            <a href="/boat/add" class="add-button green">
+              + Añadir Barco
+            </a>
+            <a href="/member/add" class="add-button blue">
+              + Añadir Miembro
+            </a>
+            <a href="/registration/add" class="add-button orange">
+              + Añadir Matrícula
+            </a>
+            <a href="/reservation/add" class="add-button purple">
+              + Añadir Reserva
+            </a>
+        </div>
     </div>
+    
+    <hr> 
 
-    <div th:if="${boats.isEmpty()}">
-        <p>No hay barcos registrados en la base de datos.</p>
-    </div>
+    <div class="grid-container">
 
-</body>
+        <div class="card">
+            <h2>Lista de Barcos ⛵</h2>
+            <div th:if="${!boats.isEmpty()}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Matrícula</th>
+                            <th>Tipo</th>
+                            <th>Capacidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="boat : ${boats}">
+                            <td th:text="${boat.name}">El Veloz</td>
+                            <td th:text="${boat.registrationNumber}">1234-ABC</td>
+                            <td th:text="${boat.type}">VELERO</td>
+                            <td th:text="${boat.capacity}">8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${boats.isEmpty()}">
+                <p>No hay barcos registrados en la base de datos.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Lista de Miembros 🙍</h2>
+            <div th:if="${!members.isEmpty()}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>DNI</th>
+                            <th>Rol</th>
+                            <th>¿Patrón?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="member : ${members}">
+                            <td th:text="${member.memberId}">1</td>
+                            <td th:text="${member.firstName}">John</td>
+                            <td th:text="${member.lastName}">Doe</td>
+                            <td th:text="${member.dni}">12345678X</td>
+                            <td th:text="${member.role}">TITULAR</td>
+                            <td th:text="${member.skipperTitle ? 'Sí' : 'No'}">Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${members.isEmpty()}">
+                <p>No hay miembros registrados en la base de datos.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Lista de Matrículas 🎟️</h2>
+            <div th:if="${!registrations.isEmpty()}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Matrícula</th>
+                            <th>Tipo</th>
+                            <th>Fecha Creación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="reg : ${registrations}">
+                            <td th:text="${reg.registrationId}">1</td>
+                            <td th:text="${reg.type}">INDIVIDUAL</td>
+                            <td th:text="${reg.creationDate}">2025-10-19</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${registrations.isEmpty()}">
+                <p>No hay matrículas registradas.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Lista de Reservas 📅</h2>
+            <div th:if="${!reservations.isEmpty()}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Reserva</th>
+                            <th>ID Miembro</th>
+                            <th>ID Matrícula</th>
+                            <th>Fecha</th>
+                            <th>Asientos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="res : ${reservations}">
+                            <td th:text="${res.reservationId}">1</td>
+                            <td th:text="${res.memberId}">1</td>
+                            <td th:text="${res.registrationId}">1</td>
+                            <td th:text="${res.date}">2025-10-20</td>
+                            <td th:text="${res.reservedSeats}">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${reservations.isEmpty()}">
+                <p>No hay reservas registradas.</p>
+            </div>
+        </div>
+
+    </div> </body>
 </html>

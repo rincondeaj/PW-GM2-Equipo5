@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/thymeleaf.org">
+<head>
+    <title>Añadir Barco</title>
+    <link rel="stylesheet" th:href="@{/css/main-styles.css}" />
+</head>
+<body>
+    <h1>Añadir un Nuevo Barco ⚓</h1>
+
+    <form method="POST" th:action="@{/boat/add}" th:object="${newBoat}">
+        
+        <div>
+            <label for="registrationNumber">Matrícula (PK):</label>
+            <input type="text" th:field="*{registrationNumber}" id="registrationNumber" />
+        </div>
+        
+        <div>
+            <label for="name">Nombre:</label>
+            <input type="text" th:field="*{name}" id="name" />
+        </div>
+
+        <div>
+            <label for="type">Tipo de Barco:</label>
+            <select th:field="*{type}" id="type">
+                <option th:each="boatType : ${T(es.uco.pw.demo.model.Boat.BoatType).values()}"
+                        th:value="${boatType}"
+                        th:text="${boatType}">
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="capacity">Capacidad:</label>
+            <input type="number" th:field="*{capacity}" id="capacity" />
+        </div>
+
+        <div>
+            <label for="dimensions">Dimensiones:</label>
+            <input type="text" th:field="*{dimensions}" id="dimensions" />
+        </div>
+        
+        <div>
+            <label for="skipperId">ID del Patrón (Skipper):</label>
+            <input type="number" th:field="*{skipperId}" id="skipperId" />
+        </div>
+
+        <button type="submit">Guardar Barco</button>
+    </form>
+    
+    <br/>
+    <a href="/">Volver al Dashboard</a>
+</body>
+</html>
