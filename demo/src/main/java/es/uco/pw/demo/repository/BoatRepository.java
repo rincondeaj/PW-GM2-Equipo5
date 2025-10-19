@@ -77,6 +77,4 @@ public class BoatRepository {
                 boat.getDimensions(),
                 boat.getSkipperId());
     }
-
-    // Aquí puedes añadir más métodos (update, delete, etc.)
 }

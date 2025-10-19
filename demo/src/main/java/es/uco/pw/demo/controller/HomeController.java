@@ -1,13 +1,13 @@
 package es.uco.pw.demo.controller;
 
-import es.uco.pw.demo.model.Boat; // <-- AÑADE ESTE IMPORT
+import es.uco.pw.demo.model.Boat;
 import es.uco.pw.demo.repository.BoatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model; // <-- AÑADE ESTE IMPORT
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List; // <-- AÑADE ESTE IMPORT
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -20,7 +20,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String home(Model model) { // <-- AÑADE (Model model)
+    public String home(Model model) {
         
         // 1. Obtenemos todos los barcos de la BBDD
         List<Boat> boats = boatRepository.findAll();
