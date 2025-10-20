@@ -5,24 +5,24 @@ import java.time.LocalDate;
 public class Reservation {
 
     // Atributos
-    private int reservationId;
-    private int memberId;
-    private int registrationId;
+    private Integer reservationId;
+    private Integer memberId;
+    private Integer registrationId;
     private LocalDate date;
-    private int reservedSeats;
+    private Integer reservedSeats;
     private String purpose;
-    private double totalPrice;
+    private Double totalPrice;
 
     // Getters
-    public int getReservationId() {
+    public Integer getReservationId() {
         return reservationId;
     }
 
-    public int getMemberId() {
+    public Integer getMemberId() {
         return memberId;
     }
 
-    public int getRegistrationId() {
+    public Integer getRegistrationId() {
         return registrationId;
     }
 
@@ -30,7 +30,7 @@ public class Reservation {
         return date;
     }
 
-    public int getReservedSeats() {
+    public Integer getReservedSeats() {
         return reservedSeats;
     }
 
@@ -38,20 +38,20 @@ public class Reservation {
         return purpose;
     }
 
-    public double getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
     // Setters
-    public void setReservationId(int reservationId) {
+    public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(Integer memberId) {
         this.memberId = memberId;
     }
 
-    public void setRegistrationId(int registrationId) {
+    public void setRegistrationId(Integer registrationId) {
         this.registrationId = registrationId;
     }
 
@@ -59,7 +59,7 @@ public class Reservation {
         this.date = date;
     }
 
-    public void setReservedSeats(int reservedSeats) {
+    public void setReservedSeats(Integer reservedSeats) {
         this.reservedSeats = reservedSeats;
     }
 
@@ -67,7 +67,7 @@ public class Reservation {
         this.purpose = purpose;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 }
